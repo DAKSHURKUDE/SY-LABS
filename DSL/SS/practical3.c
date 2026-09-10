@@ -59,7 +59,7 @@ void bubble(float a[])
     
     for(int i = 0; i < n-1; i++)
     {
-        for(j=0; j<n-i-1; j++)
+        for(int j=0; j<n-i-1; j++)
         {
             if(a[j] > a[j+1])
             {
@@ -84,7 +84,7 @@ void display(float a[])
 
 int main()
 {
-    int choice;
+    int choice , n;
     float a[50];
 
     input(a);
@@ -115,6 +115,24 @@ int main()
             printf("Invalid choice!!");
     }
 
-    
+    if (choice >= 1 && choice <= 3)
+    {
+       printf("\nTop Five Students:\n");
+       
+       if(n<5)
+        {
+            for (int i = n-1; i >= 0; i--)
+            {
+                printf("%.2f\n", a[i]);
+            }
+        }
+        else
+        {
+            for (int i = n-1; i >= n-5; i--)
+            {
+                printf("%.2f\n", a[i]);
+            }
+        }
+    }
     return 0;
 }
