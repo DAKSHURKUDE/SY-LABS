@@ -1,6 +1,6 @@
 #include<stdio.h>
 
-void input(float a[])
+int input(float a[])
 {
     int n;
     printf("Enter the number of students:\n");
@@ -10,11 +10,12 @@ void input(float a[])
     {
         scanf("%f",&a[i]);
     }
+
+    return n;
 }
 
-void selection(float a[])
+void selection(float a[], int n)
 {
-    int n = sizeof(a)/sizeof(a[0]);
     int min;
     float temp;
 
@@ -33,9 +34,8 @@ void selection(float a[])
     }
 }
 
-void insertion(float a[])
+void insertion(float a[], int n)
 {
-    int n = sizeof(a)/sizeof(a[0]);
     float key;
 
     for(int i = 1; i<n; i++)
@@ -52,9 +52,8 @@ void insertion(float a[])
     }
 }
 
-void bubble(float a[])
+void bubble(float a[], int n)
 {
-    int n = sizeof(a)/sizeof(a[0]);
     float temp;
     
     for(int i = 0; i < n-1; i++)
@@ -71,13 +70,11 @@ void bubble(float a[])
     }
 }
 
-void display(float a[])
+void display(float a[], int n)
 {
-    int n = sizeof(a)/sizeof(a[0]);
-
     for(int i =0; i < n ; i++)
     {
-        printf("%.2f",a[i]);
+        printf("%.2f ",a[i]);
     }
     printf("\n");
 }
@@ -87,34 +84,35 @@ int main()
     int choice , n;
     float a[50];
 
-    input(a);
+    n = input(a);
 
     printf("Enter the Sort to be Performed:\n1 - Selection Sort\n2 - Bubble Sort\n3 - Insertion Sort\nEnter : ");
+    scanf("%d", &choice);
 
     switch(choice)
     {
         case 1:
-            selection(a);
+            selection(a, n);
             printf("Sorted array using Selection Sort:\n");
-            display(a);
+            display(a, n);
             break;
-
+        
         case 2:
-            bubble(a);
+            bubble(a, n);
             printf("Sorted array using Bubble Sort:\n");
-            display(a);
+            display(a, n);
             break;
-
+        
         case 3:
-            insertion(a);
+            insertion(a, n);
             printf("Sorted array using Insertion Sort:\n");
-            display(a);
+            display(a, n);
             break;
-
+        
         default:
             printf("Invalid choice!!");
-    }
-
+        }
+       
     if (choice >= 1 && choice <= 3)
     {
        printf("\nTop Five Students:\n");
